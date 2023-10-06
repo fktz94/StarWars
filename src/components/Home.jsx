@@ -16,7 +16,7 @@ export default function Home() {
       <LinkListItem section="planets" />
       <LinkListItem section="species" />
       <LinkListItem section="starships" />
-      {/* <Link to="vehicles">go to vehicles section</Link> */}
+      <LinkListItem section="vehicles" />
     </div>
   );
 }

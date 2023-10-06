@@ -11,7 +11,8 @@ import SpeciesPage from './components/pages/species/SpeciesPage';
 import SpeciesCard from './components/pages/species/SpeciesCard';
 import StarshipsPage from './components/pages/starships/StarshipsPage';
 import StarshipsCard from './components/pages/starships/StarshipsCard';
-// import Vehicles from './components/pages/Vehicles';
+import VehiclesPage from './components/pages/vehicles/VehiclesPage';
+import VehiclesCard from './components/pages/vehicles/VehiclesCard';
 
 export default function App() {
   return (
@@ -29,7 +30,8 @@ export default function App() {
           <Route path="species/:id" element={<SpeciesCard />} />
           <Route path="starships" element={<StarshipsPage />} />
           <Route path="starships/:id" element={<StarshipsCard />} />
-          {/* <Route path="vehicles" element={<Vehicles />} />  */}
+          <Route path="vehicles" element={<VehiclesPage />} />
+          <Route path="vehicles/:id" element={<VehiclesCard />} />
         </Route>
       </Routes>
     </BrowserRouter>
