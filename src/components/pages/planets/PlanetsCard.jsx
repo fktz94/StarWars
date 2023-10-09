@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import useParticularFetch from '../../../hooks/useParticularFetch';
 import CardContainer from '../../CardContainer';
 import ListItem from '../../ListItem';
-import useListOfNames from '../../../hooks/useListOfNames';
+import useRenderSectionsLists from '../../../hooks/useRenderSectionsLists';
 
 export default function PeopleCard() {
   const { data, error, isLoading } = useParticularFetch();
@@ -25,7 +25,7 @@ export default function PeopleCard() {
     return { residents, films };
   }, [residents, films]);
 
-  const { sectionsRendered } = useListOfNames(data, objectWithData);
+  const { sectionsRendered } = useRenderSectionsLists(data, objectWithData);
 
   return (
     <CardContainer error={error} isLoading={isLoading}>

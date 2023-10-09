@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
-export default function useParticularFetch(propURL) {
+export default function useParticularFetch() {
   const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   const { id } = useParams();
@@ -12,15 +12,14 @@ export default function useParticularFetch(propURL) {
   const section = location.pathname.split('/').slice(1, 2)[0];
 
   const URL = `https://swapi.dev/api/${section}/${id}`;
-  const fetchURL = propURL || URL;
 
   useEffect(() => {
     const controller = new AbortController();
     (async () => {
       try {
         setIsLoading(true);
-        const fetch = await axios.get(fetchURL, { signal: controller.signal });
-        const resp = fetch.data;
+        const fetch = await axios.get(URL, { signal: controller.signal });
+        const resp = await fetch.data;
         setData(resp);
       } catch (err) {
         setError(err.message);
@@ -30,11 +29,12 @@ export default function useParticularFetch(propURL) {
     })();
 
     return () => {
+      controller.abort();
       setData({});
       setError('');
-      controller.abort();
+      setIsLoading(true);
     };
-  }, [fetchURL]);
+  }, [URL]);
 
   return { data, error, isLoading };
 }

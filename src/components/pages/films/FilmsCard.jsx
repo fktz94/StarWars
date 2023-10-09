@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import useParticularFetch from '../../../hooks/useParticularFetch';
 import CardContainer from '../../CardContainer';
 import ListItem from '../../ListItem';
-import useListOfNames from '../../../hooks/useListOfNames';
+import useRenderSectionsLists from '../../../hooks/useRenderSectionsLists';
 
 export default function FilmsCard() {
   const { data, error, isLoading } = useParticularFetch();
@@ -24,7 +24,7 @@ export default function FilmsCard() {
     return { characters, planets, starships, vehicles, species };
   }, [characters, planets, starships, vehicles, species]);
 
-  const { sectionsRendered } = useListOfNames(data, objectWithData);
+  const { sectionsRendered } = useRenderSectionsLists(data, objectWithData);
 
   return (
     <CardContainer error={error} isLoading={isLoading}>

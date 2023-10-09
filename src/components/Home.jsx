@@ -9,14 +9,9 @@ function LinkListItem({ section }) {
 }
 
 export default function Home() {
-  return (
-    <div className="flex flex-col">
-      <LinkListItem section="people" />
-      <LinkListItem section="films" />
-      <LinkListItem section="planets" />
-      <LinkListItem section="species" />
-      <LinkListItem section="starships" />
-      <LinkListItem section="vehicles" />
-    </div>
-  );
+  const sections = ['people', 'films', 'planets', 'species', 'starships', 'vehicles'];
+
+  const links = sections.map((el) => <LinkListItem key={el} section={el} />);
+
+  return <div className="flex flex-col">{links}</div>;
 }
