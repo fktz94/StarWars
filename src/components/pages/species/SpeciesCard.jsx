@@ -7,6 +7,8 @@ import useRenderSectionsLists from '../../../hooks/useRenderSectionsLists';
 export default function SpeciesCard() {
   const { data, error, isLoading } = useParticularFetch();
 
+  console.log(isLoading);
+
   const {
     name,
     classification,

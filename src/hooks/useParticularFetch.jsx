@@ -18,6 +18,7 @@ export default function useParticularFetch() {
     // the error caused because the fetch abort caused by the rerender of the effect appears AFTER the second render, and so the UI doesn't work as i want
 
     const controller = new AbortController();
+
     (async () => {
       try {
         setIsLoading(true);
@@ -32,10 +33,10 @@ export default function useParticularFetch() {
     })();
 
     return () => {
-      controller.abort();
       setData({});
       setError('');
       setIsLoading(true);
+      controller.abort();
     };
   }, [URL]);
 
